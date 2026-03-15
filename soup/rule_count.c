@@ -238,7 +238,7 @@ rule_count(FILE *fp_in)
 {
 	size_t wordi = 0;
 	char word[WORD_BUFFER_SIZE];
-	RuleCount counts = { 0, 0, 0, false, false, false, false, false };
+	RuleCount counts = { 0, 0, 0, false, false, false, false };
 	int ch, next_ch, quote = NO_STRING, escape = 0, is_comment = NO_COMMENT;
 
 /* If quote == NO_STRING (0) and is_comment == NO_COMMENT (0) then its code. */
