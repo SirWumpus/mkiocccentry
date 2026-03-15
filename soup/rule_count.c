@@ -8,24 +8,6 @@
  */
 
 /*
- * ISO C11 section 5.2.1 defines source character set, specifically:
- *
- *	The representation of each member of the source and execution
- *	basic character sets shall fit in a byte.
- *
- * Note however that string literals and comments could contain non-ASCII
- * (consider non-English developers writing native language comments):
- *
- *	If any other characters are encountered in a source file (except
- *	in an identifier, a character constant, a string literal, a header
- *	name, a comment, or a preprocessing token that is never converted
- *	to a token), the behavior is undefined.
- *
- * Probably best to leave as-is, count them, and let the compiler sort it.
- */
-#undef ASCII_ONLY
-
-/*
  * HINT: The algorithm implemented by this code may or not be obfuscated.
  *       The algorithm may not or may appear to be obfuscated.
  *
@@ -282,14 +264,6 @@ rule_count(FILE *fp_in)
 			/* Discard bare CR and those part of CRLF. */
 			counts.rule_2a_size++;
 		}
-#ifdef ASCII_ONLY
-		if (!isascii(ch) || (ch >= 0x80)) {
-			counts.char_warning = true;
-			counts.rule_2a_size++;
-			continue;
-		}
-#endif
-
 #ifdef TRIGRAPHS
 		if (ch == '?' && next_ch == '?') {
 			/* ISO C11 section 5.2.1.1 Trigraph Sequences */
