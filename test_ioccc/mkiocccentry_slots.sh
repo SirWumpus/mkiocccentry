@@ -26,9 +26,6 @@
 #     --  Sirius Cybernetics Corporation Complaints Division, JSON spec department. :-)
 #
 
-# setup
-
-
 # IOCCC requires use of C locale
 #
 export LANG="C"
@@ -56,7 +53,7 @@ export V_FLAG=0
 #
 export DO_NOT_PROCESS=
 #
-export VERSION="2.0.0 2026-10-06"
+export VERSION="2.0.1 2026-11-07"
 export GOOD_TREE="./test_ioccc/slot/good"
 export GOOD_TEMPLATE="./test_ioccc/slot/template/good"
 export BAD_TREE="./test_ioccc/slot/bad"
@@ -230,16 +227,22 @@ fi
 # check for rsync
 #
 if [[ ! -e $RSYNC_BIN ]]; then
-    echo "$0: ERROR: rsync not found: $RSYNC_BIN" 1>&2
-    exit 11
+    echo "$0: notice: your distribution/system declined to provide rsync: $RSYNC_BIN" 1>&2
+    echo "$0: notice: so, we will decline to run this code - have a nice day. :-)" 1>&2
+    echo "$0: notice: yes, we could recode to use other commands, but yeah nah." 1>&2
+    exit 0
 fi
 if [[ ! -f $RSYNC_BIN ]]; then
-    echo "$0: ERROR: rsync not a regular file: $RSYNC_BIN" 1>&2
-    exit 11
+    echo "$0: notice: your distribution/system has a non-file rsync: $RSYNC_BIN" 1>&2
+    echo "$0: notice: therefore, we will decline to run this code - have a nice day. :-)" 1>&2
+    echo "$0: notice: yes, we could recode to use other commands, but yeah nah." 1>&2
+    exit 0
 fi
 if [[ ! -x $RSYNC_BIN ]]; then
-    echo "$0: ERROR: rsync not executable: $RSYNC_BIN" 1>&2
-    exit 11
+    echo "$0: notice: your distribution/system non-executable rsync: $RSYNC_BIN" 1>&2
+    echo "$0: notice: thus, we will decline to run this code - have a nice day. :-)" 1>&2
+    echo "$0: notice: yes, we could recode to use other commands, but yeah nah." 1>&2
+    exit 0
 fi
 
 # check that the good template tree is a readable directory
@@ -391,7 +394,6 @@ if [[ $V_FLAG -ge 3 ]]; then
     echo "$0: debug[3]: BAD_TEMPLATE=$BAD_TEMPLATE" 1>&2
     echo "$0: debug[3]: MKIOCCCENTRY=$MKIOCCCENTRY" 1>&2
     echo "$0: debug[3]: REPO_TOPDIR=$REPO_TOPDIR" 1>&2
-    echo "$0: debug[3]: RSYNC_BIN=$RSYNC_BIN" 1>&2
     echo "$0: debug[3]: UUID=$UUID" 1>&2
     echo "$0: debug[3]: RSYNC_BIN=$RSYNC_BIN" 1>&2
     echo "$0: debug[3]: EXIT_CODE=$EXIT_CODE" 1>&2

@@ -1,6 +1,54 @@
 # Major changes to the IOCCC mkiocccentry toolkit
 
 
+## Release 2.12.6 2026-11-07
+
+Disable `test_ioccc/mkiocccentry_slots.sh` is `rsync(1)` is missing.
+
+Changed `MKIOCCCENTRY_REPO_VERSION` to "2.12.6 2026-11-07"
+
+
+## Release 2.12.5 2026-10-06
+
+Improved how `test_ioccc/mkiocccentry_slots.sh` forms test slot data.
+
+Added `-N` to `test_ioccc/mkiocccentry_slots.sh` for do not process anything.
+
+Changed `-g good_tree` to specify the path of where to form the good slot tree.
+Added `-G good_template` to specify the path of the templates for the good tree.
+
+Changed `-b bad_tree` to specify the path of where to form the bad slot tree.
+Added `-B bad_template` to specify the path of the templates for the bad tree.
+
+Added `-U UUID` to use username UUID.  The default is username UUID
+is "12345678-1234-4321-abcd-1234567890ab", which is the historic test UUID.
+
+Added `-R rsync` to specify the path to rsync tool.
+
+Added `test_ioccc/gen_submit.sh` tool to call `test_ioccc/mkiocccentry_slots.sh`
+to build a slot tree, with both good and bad sub-directories, for a given UUID.
+Unlike `test_ioccc/mkiocccentry_slots.sh` that defaults to the username UUID
+is "12345678-1234-4321-abcd-1234567890ab", the `test_ioccc/gen_submit.sh` tool,
+given and valid UUID username, can build them.
+
+Changed `VERSION` in `test_ioccc/mkiocccentry_slots.sh` to "2.0.0 2026-10-06"
+
+Because back in "Release 2.12.4 2026-09-27" we updated soup, `dbg/`,
+`cpath/`, `pr/`, and `jparse/`, we now updated the versions for
+`mkiocccentry`, `fnamchk`, `txzchk`, `chkentry`, and `chksubmit` for force
+submissions for **IOCCC30** to use tools that depend on those updates.
+
+Changed `MKIOCCCENTRY_VERSION` to "2.5.0 2026-10-06"
+Changed `FNAMCHK_VERSION` to "2.3.0 2026-10-06"
+Changed `TXZCHK_VERSION` to "2.2.0 2026-10-06"
+Changed `CHKENTRY_VERSION` to "2.4.0 2026-10-06"
+Changed `CHKSUBMIT_VERSION` to "2.2.0 2026-10-06"
+
+The above will set new minimum versions for **IOCCC30**.
+
+Changed `MKIOCCCENTRY_REPO_VERSION` to "2.12.5 2026-10-06"
+
+
 ## Release 2.12.4 2026-09-27
 
 Updated Supported Versions in various `SECURITY.md` files.
